@@ -1,18 +1,5 @@
 let decimal = parseInt(prompt("Ingresa un número decimal", 10));
 
-//Una funcion original del Team Sin Nombre que redondea culquier número decimal a un entero, mucho mejor que un Math.round.😉
-function teamSinNombreRound(n) {
-  let nRound = 0;
-  if (n % 1 >= 0.5 && n % 1 < 1) {
-    nRound = n + 1 - (n % 1);
-  } else if (n % 1 > 0 && n % 1 < 0.5) {
-    nRound = n - (n % 1);
-  } else {
-    nRound = n;
-  }
-  return nRound;
-}
-
 function decToHex(n) {
   let valors = [
     "0",
@@ -35,26 +22,53 @@ function decToHex(n) {
   let divisor = n;
   let cociente = 0;
   let residuo = 0;
-  let stroge = "";
-  let newStroge = "";
+  let stroage = "";
+  let result;
 
   while (divisor > 0) {
-    residuo = divisor % 16;
-    residuo = parseInt(residuo);
-    cociente = divisor / 16;
-    cociente = parseInt(cociente);
-    stroge += valors[residuo];
+    residuo = parseInt(divisor % 16);
+    cociente = parseInt(divisor / 16);
+    stroage += valors[residuo];
     divisor = cociente;
   }
 
-  //El ciclo devuelve los valores while ivertidos, entonces utilizamos la siguiente funcion para ordenarlos.
-  let size = stroge.length - 1;
-  for (let i = size; i  >= 0; i--) {
-    newStroge += stroge[i];
-  }
+  result = invert(stroage);
 
-  return newStroge;
+  return result;
 }
 
-document.write(decToHex(decimal));
+//Una funcion original del Team Sin Nombre que redondea culquier número decimal a un entero, mucho mejor que un Math.round().😉
+function teamSinNombreRound(n) {
+  if (n % 1 !== 0) {
+    if (n % 1 > 0.5) {
+      return n + 1 - (n % 1);
+    } else {
+      return n - (n % 1);
+    }
+  } else {
+    return n;
+  }
+}
+
+//El ciclo devuelve los valores while ivertidos, entonces utilizamos la siguiente funcion para ordenarlos / invertirlos.
+function invert(arr) {
+  let stroage = arr;
+  let size = stroage.length - 1;
+  let newStroage = "";
+
+  for (let i = size; i >= 0; i--) {
+    newStroage += stroage[i];
+  }
+
+  return newStroage;
+}
+
+document.write(
+  "<sup>",
+  decimal,
+  "</sup>10 ",
+  "<sup> = ",
+  decToHex(decimal),
+  "</sup>16"
+);
 console.log(decToHex(decimal));

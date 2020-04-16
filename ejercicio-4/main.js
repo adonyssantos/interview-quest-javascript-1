@@ -1,4 +1,17 @@
-let decimal = parseInt(prompt("Ingresa un número decimal"));
+let decimal = parseInt(prompt("Ingresa un número decimal", 10));
+
+//Una funcion original del Team Sin Nombre que redondea culquier número decimal a un entero, mucho mejor que un Math.round.😉
+function teamSinNombreRound(n) {
+  let nRound = 0;
+  if (n % 1 >= 0.5 && n % 1 < 1) {
+    nRound = n + 1 - (n % 1);
+  } else if (n % 1 > 0 && n % 1 < 0.5) {
+    nRound = n - (n % 1);
+  } else {
+    nRound = n;
+  }
+  return nRound;
+}
 
 function decToHex(n) {
   let valors = [
@@ -26,14 +39,17 @@ function decToHex(n) {
   let newStroge = "";
 
   while (divisor > 0) {
-    residuo = parseInt(divisor % 16);
-    cociente = parseInt(divisor / 16);
+    residuo = divisor % 16;
+    residuo = parseInt(residuo);
+    cociente = divisor / 16;
+    cociente = parseInt(cociente);
     stroge += valors[residuo];
     divisor = cociente;
   }
 
-  //El ciclo devuelve los valores ivertidos, entonces utilizamos el siguiente ciclo para ordenarlos.
-  for (let i = stroge.length - 1; i >= 0; i--) {
+  //El ciclo devuelve los valores while ivertidos, entonces utilizamos la siguiente funcion para ordenarlos.
+  let size = stroge.length - 1;
+  for (let i = size; i  >= 0; i--) {
     newStroge += stroge[i];
   }
 

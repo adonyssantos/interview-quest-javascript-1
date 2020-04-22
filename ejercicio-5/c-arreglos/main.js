@@ -1,22 +1,22 @@
-//Este es el ejemplo de un Nodo binario, es decir, que contiene dos ramas.
-function Nodo(valor) {
-  this.valor = valor;
-  this.left;
-  this.right;
+//EJERCICIO #13 : Usando ciclos, escriba un programa que imprima por HTML los siguientes gráficos.
+
+let a = [6, 5, 4, 3, 2, 1];
+let b = [1, 3, 5, 7, 9];
+let c = [1, 3, 5, 7, 9, 7, 5, 3, 1];
+let valor;
+
+function imprimirGrafico(arr) {
+  for (valor of arr) {
+    for (i = 0; i < valor; i++) {
+      document.write("*");
+    }
+    document.write("</br>");
+  }
 }
 
-//Nodo Raiz
-let nodoRaiz = new Nodo(1);
-//Rama izquierda
-let leftNodo = new Nodo(2);
-//Rama derecha
-let rightNodo = new Nodo(3);
-
-//Conexion del Nodo Izquierdo
-nodoRaiz.left = leftNodo;
-//Conexion del Nodo Derecho
-nodoRaiz.right = rightNodo;
-
-document.write(nodoRaiz.valor, "<br/>");
-document.write(nodoRaiz.left.valor, "<br/>");
-document.write(nodoRaiz.right.valor);
+document.write("A) </br>");
+imprimirGrafico(a);
+document.write("B) </br>");
+imprimirGrafico(b);
+document.write("C) </br>");
+imprimirGrafico(c);

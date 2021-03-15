@@ -1,2 +1,2 @@
 # Práctica 2: Funciones y Recursividad
-TSN: #6, #13, #15, #16, #21
+Este proyecto fue hecho por: Estheixys, Miguel, Yusset, Vanessa y Adonys.
